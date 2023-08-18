@@ -1,0 +1,12 @@
+.ContaineBox {
+    width: 25%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.amount {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+}
