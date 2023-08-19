@@ -4,10 +4,13 @@ import '../styles/Box.css';
 import closedBoxSvg from '../svg/1.svg';
 import openBoxSvg from '../svg/2.svg';
 
-const Box = ({ amount, isOpen, onClick, boxNumber }) => {
+function Box({ amount, isOpen, onClick, boxNumber, color }) {
+    console.log("Box props:", { amount, isOpen, onClick, boxNumber, color });
 
     const handleClick = () => {
-        onClick();
+        if (!isOpen && onClick) {
+            onClick(); // Appeler onClick seulement si la boîte n'est pas encore ouverte
+        }
     };
 
     return (
@@ -18,6 +21,6 @@ const Box = ({ amount, isOpen, onClick, boxNumber }) => {
             </div>
         </div>
     );
-};
+}
 
 export default Box;
