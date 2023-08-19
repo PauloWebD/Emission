@@ -1,7 +1,7 @@
-// src/App.js
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Box from './components/Box';
+import remainingLotsData from './data/Lots.json'; // Assurez-vous de l'importer correctement
 
 function shuffleArray(array) {
   const shuffledArray = [...array];
@@ -12,37 +12,27 @@ function shuffleArray(array) {
   return shuffledArray;
 }
 
+// ... Importations et fonctions précédentes ...
 
 function App() {
-
-  const romanticLots = [
-    "Un bisou doux",
-    "Un dîner aux chandelles",
-    "Un week-end romantique",
-    "Un câlin chaleureux",
-    "Un petit déjeuner au lit",
-    "Une soirée cinéma à la maison",
-    "Un massage relaxant",
-    "Une promenade main dans la main",
-    "Un pique-nique romantique",
-    "Une lettre d'amour",
-    "Un moment de danse en amoureux",
-    "Un bain moussant à deux",
-    "Une soirée jeux de société",
-    "Une séance de stargazing",
-    "Un gage romantique de ton choix",
-    "Un jour de folie à deux",
-    "Un rendez-vous surprise",
-    "Une journée sans téléphone",
-    "Une journée de câlins non-stop",
-    "Une journée ménage"
-  ];
-
+  const [theme, setTheme] = useState('romantic');
   const [boxes, setBoxes] = useState([]);
   const [remainingLots, setRemainingLots] = useState([]);
+  const [foundLots, setFoundLots] = useState({
+    mauvaisLots: [],
+    lotsMoyens: [],
+    bonsLots: [],
+    superLots: [],
+  });
 
   useEffect(() => {
-    const shuffledLots = shuffleArray(romanticLots);
+    const selectedThemeData = remainingLotsData[theme] || {};
+    const allLots = Object.values(selectedThemeData).reduce((acc, subCategory) => {
+      return acc.concat(subCategory);
+    }, []);
+
+    const shuffledLots = shuffleArray(allLots); // Mélanger les lots
+
     const initialBoxes = shuffledLots.map((lot, index) => ({
       isOpen: false,
       lotIndex: index,
@@ -51,28 +41,59 @@ function App() {
 
     setBoxes(initialBoxes);
     setRemainingLots([...shuffledLots]);
-  }, []);
+  }, [theme]);
 
   const openBox = (index) => {
     if (!boxes[index].isOpen) {
       const newBoxes = [...boxes];
       newBoxes[index] = { ...newBoxes[index], isOpen: true };
       setBoxes(newBoxes);
+
+      const foundLot = boxes[index].amount;
+      const category = Object.keys(remainingLotsData[theme]).find((cat) =>
+        remainingLotsData[theme][cat].includes(foundLot)
+      );
+
+      if (category) {
+        setFoundLots((prevFoundLots) => ({
+          ...prevFoundLots,
+          [category]: [...prevFoundLots[category], foundLot],
+        }));
+      }
     }
   };
 
   return (
     <div className="App">
       <h1>À Prendre ou à Laisser</h1>
+      <div className="theme-buttons">
+        <button onClick={() => setTheme('romantic')}>Romantique</button>
+        <button onClick={() => setTheme('partYfriends')}>Soirée entre amis</button>
+      </div>
       <div className="game-container">
-
         <div className="remaining-lots">
-          <ul>
-            {remainingLots.map((lot, index) => (
-              <li key={index}>{lot}</li>
-            ))}
-          </ul>
+          <h2>{theme === 'romantic' ? 'Romantique' : 'Soirée entre amis'}</h2>
+          {Object.keys(remainingLotsData[theme]).map((category) => (
+            <div key={category}>
+              <h3>{category}</h3>
+              <ul>
+                {remainingLotsData[theme][category].map((lot, index) => (
+                  <li
+                    key={index}
+                    className={
+                      foundLots[category].includes(lot) && boxes.some((box) => box.amount === lot && box.isOpen)
+                        ? 'strikethrough'
+                        : ''
+                    }
+                  >
+                    {lot}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
+
         <div className="box-container">
           {boxes.map((box, index) => (
             <Box
@@ -85,10 +106,10 @@ function App() {
             />
           ))}
         </div>
-
       </div>
     </div>
   );
 }
 
 export default App;
+

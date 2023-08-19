@@ -1,0 +1,62 @@
+{
+    "romantic": {
+        "mauvaisLots": [
+            "Un jour de pluie",
+            "Un oubli de l'anniversaire",
+            "Une dispute",
+            "Une panne de voiture en plein hiver",
+            "Un orteil cogné dans un meuble"
+        ],
+        "lotsMoyens": [
+            "Un bouquet de fleurs",
+            "Un film au cinéma",
+            "Un message doux",
+            "Un déjeuner en ville",
+            "Une balade au parc"
+        ],
+        "bonsLots": [
+            "Un week-end à la campagne",
+            "Un dîner dans un bon restaurant",
+            "Une escapade en amoureux",
+            "Un massage en spa",
+            "Un coucher de soleil sur la plage"
+        ],
+        "superLots": [
+            "Un voyage à l'étranger",
+            "Un bijou précieux",
+            "Un saut en parachute en tandem",
+            "Un séjour dans un château",
+            "Une soirée surprise organisée"
+        ]
+    },
+    "partYfriends": {
+        "mauvaisLots": [
+            "Faites une imitation embarrassante de quelqu'un du groupe",
+            "Chantez la chanson la plus gênante que vous connaissez",
+            "Inventez une histoire farfelue tous ensemble",
+            "Mettez un glaçon dans votre poche et ne le retirez qu'à la fin de la soirée",
+            "Faites une blague à chaque personne du groupe"
+        ],
+        "lotsMoyens": [
+            "Jouez à un jeu de société en équipe",
+            "Faites un karaoké en groupe",
+            "Répondez à chaque question en chantant",
+            "Inventez une histoire à tour de rôle",
+            "Mangez un aliment épicé sans boire pendant 1 minute"
+        ],
+        "bonsLots": [
+            "Organisez un concours de talents",
+            "Créez un photomaton avec des accessoires drôles",
+            "Parlez avec un accent bizarre pendant 10 minutes",
+            "Mangez quelque chose sans utiliser vos mains",
+            "Faites une déclaration d'amour à un objet inanimé"
+        ],
+        "superLots": [
+            "Organisez une soirée à thème",
+            "Participez à un défi de danse en duo",
+            "Faites un saut en parachute en tandem",
+            "Chantez une chanson avec une cuillère comme micro",
+            "Imitez une scène de film célèbre"
+        ]
+    }
+}

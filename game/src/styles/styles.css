@@ -1,0 +1,112 @@
+.ContaineBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    margin: 20px;
+    border-radius: 10%;
+    background-color: beige;
+
+}
+
+/* ChosenBox.css */
+.chosen-box {
+    border: 2px solid #ff9900;
+    background-color: #ffeecc;
+    padding: 10px;
+    text-align: center;
+    margin: 10px;
+}
+
+/* ThemeSelector.css */
+.theme-selector {
+    margin: 10px;
+}
+
+.theme-selector p {
+    font-weight: bold;
+}
+
+.theme-selector select {
+    padding: 5px;
+}
+
+/* PlayerBoxSelector.css */
+.player-box-selector {
+    margin: 10px;
+}
+
+.player-box-selector p {
+    font-weight: bold;
+}
+
+.player-box-selector select {
+    padding: 5px;
+}
+
+.player-box-selector button {
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Box.css */
+.container-box {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+.chosen {
+    /* Styles for the chosen box */
+    border-color: #ff5722;
+    /* Example color */
+}
+
+/* Add any additional styles you need */
+
+
+.container-box.chosen {
+    background-color: #ff9900;
+    color: white;
+}
+
+.container-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+.amount {
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* GameBoard.css */
+.game-board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* App.css */
+.App {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    color: #ff9900;
+}
+
+.game-container {
+    margin-top: 20px;
+}
